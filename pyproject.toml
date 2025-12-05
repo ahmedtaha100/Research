@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "surface-code-sim"
+version = "0.1.0"
+description = "Rotated surface-code simulator with Qiskit front end, Stim backend, and MWPM decoding"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Ahmed Taeha", email = "ataeha1@jh.edu" }
+]
+dependencies = [
+  "qiskit==1.1.1",
+  "qiskit-aer==0.14.2",
+  "stim==1.15.0",
+  "pymatching==2.2.1",
+  "numpy==1.26.4",
+  "scipy==1.12.0",
+  "matplotlib==3.8.4",
+  "pandas==2.2.2",
+  "typer==0.12.3",
+  "click==8.1.7"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==8.2.0",
+  "ruff==0.6.5",
+  "pre-commit==3.7.1"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["surface_code_sim", "surface_code_sim.*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "W"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+addopts = "-q"
